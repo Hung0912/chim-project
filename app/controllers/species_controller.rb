@@ -1,15 +1,16 @@
 class SpeciesController < ApplicationController
   before_action :set_species, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_bird_images, only: [:show, :index]
   # GET /species
   # GET /species.json
   def index
-    @species = Species.all
+    @species = Species.all.order(:species_name).page(params[:page]).per(6)
   end
 
   # GET /species/1
   # GET /species/1.json
   def show
+    @birds = Bird.where(species_id:@species.id).order(:bird_name).page(params[:page]).per(6)
   end
 
   # GET /species/new
@@ -67,6 +68,9 @@ class SpeciesController < ApplicationController
       @species = Species.find(params[:id])
     end
 
+    def set_bird_images
+      @bird_images = BirdImage.joins(bird: :species)
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def species_params
       params.require(:species).permit(:species_name, :species_info, :min_price, :max_price)

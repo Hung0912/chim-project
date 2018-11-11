@@ -1,0 +1,58 @@
+<div id="colorlib-page-top-padding">
+  <div id="colorlib-main">
+    <div class="colorlib-blog">
+      <div class="colorlib-narrow-content">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
+
+			<div class="container">
+			    <h1>Edit Profile</h1>
+			    <%= form_for(@user, html: { multipart: true}) do |f| %>			  	
+			  	<hr>
+				<div class="row">
+			      <!-- left column -->
+			      <div class="col-md-3">
+			        <div class="text-center">
+			        	<%= image_tag @user.avatar.url(:thumb), class: 'avatar_edit'%>
+			         	<%= f.file_field :avatar, class: "form-control" %>
+			        </div>
+			      </div>
+			      
+			      <!-- edit form column -->
+			      <div class="col-md-9 personal-info">
+			        <h3>Personal info</h3>			        			        
+				      <%= f.label :user_name %>
+				      <%= f.text_field :user_name, class: 'form-control' %>
+
+				      <%= f.label :description %>
+				      <%= f.text_field :description, class: 'form-control' %>
+
+
+				      <%= f.label :email %>
+				      <%= f.email_field :email, class: 'form-control' %>
+
+				      <%= f.label :password %>
+				      <%= f.password_field :password, class: 'form-control' %>
+
+				      <%= f.label :password_confirmation, "Confirmation" %>
+				      <%= f.password_field :password_confirmation, class: 'form-control' %>
+
+				      <%= f.label :phone%><i>(please fill in new phone number)</i><br />
+				      <%= f.text_field :phone, autocomplete: "phone number", class: 'form-control'%><br />
+
+				      <%= f.label :sex%><i>(please select your sex)</i><br />
+				      <%= f.select :sex, ['Male', 'Female', 'Other']%><br /><br />
+				 
+				      <%= f.label :birthdate%><i>(please select your date of birth)</i><br />
+				      <%= f.date_select(:birthdate, :order => [:month, :day, :year], :start_year => Date.today.year - 100, :end_year => Date.today.year) %>
+						<br>
+				        <br>
+				      <%= f.submit "Save Changes", class: "btn btn-primary" %>
+    				<% end %>
+			      </div>
+			  </div>
+			</div>
+			<hr>
+		</div>
+	</div>
+</div>

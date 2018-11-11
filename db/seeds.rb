@@ -8,8 +8,8 @@
 
 user = User.new(
     user_name: 'admin',
-    email: 'admin@123.com', 
-    password: '123456', 
+    email: 'admin@123.com',
+    password: '123456',
     password_confirmation: '123456',
     user_role: 1
   )
@@ -38,7 +38,7 @@ species_list = [
 		0,0]
 	]
 species_list.each do |species_name,species_info,min_price,max_price|
-	Species.create( species_name: species_name, species_info: species_info, 
+	Species.create( species_name: species_name, species_info: species_info,
 		min_price: min_price, max_price: max_price)
 end
 
@@ -119,14 +119,52 @@ birds_list = [
 		"The Suliformes were nine species (in six genera) of flightless birds endemic to New Zealand.",
 		0,
 		3],
+	["Sibia (チメドリ)",
+	 "旧大陸の中低緯度（主に熱帯）に生息する。なお、アメリカ西海岸にいるミソサザイモドキ Chamaea は、チメドリ科からダルマエナガ科に移された。",
+	 0,
+	 3],
+	["Blue Jay (アオカケス)",
+	 "森林や農耕地・市街地などに生息する。ペアで縄張りを形成して生活する。英名jayは「ジェイ、ジェイ」と聞こえる鳴き声に由来するが、猛禽類の鳴き声を真似て威嚇などに用いることもある。",
+	 0,
+	 3],
+	["Lazuli bunting (スズメ目)",
+	 "南北アメリカ（ガラパゴス諸島を含む）の熱帯に生息する。雄は色鮮やかな羽色が多いが、雌は地味である。",
+	 0,
+	 3],
 	]
 birds_list.each do |bird_name, bird_info, bird_price, species_id|
-	Bird.create( bird_name: bird_name, bird_info: bird_info, 
+	Bird.create( bird_name: bird_name, bird_info: bird_info,
 		bird_price: bird_price, species_id: species_id)
 end
 
-(1..18).each do |n|
-  image = "#{n}.jpg"
+Bird.where(id:19).update_all(bird_voice:"19.mp3")
+Bird.where(id:19).update_all(bird_price:30000)
+
+(1..21).each do |n|
+  image = "bird_images/#{n}.jpg"
   bird_id = n
   BirdImage.create(image: image, bird_id: bird_id)
+end
+
+sibia_image = [
+    "bird_images/19_1.jpg",
+		"bird_images/19_2.jpg",
+		"bird_images/19_3.jpg",
+		"bird_images/19_4.jpg"
+]
+
+sibia_image.each do |i|
+	BirdImage.create(image: i, bird_id: 19)
+end
+
+
+sibia_reviews = [
+	["めっちゃ綺麗なとり~",40,1,19],
+	["この鳥の声はユニークですね",45,2,19],
+	["まだ、見てる人いまふか？？﻿",30,3,19],
+	["この鳥、飼いたいものだ :))",50,5,19],
+	]
+
+sibia_reviews.each do |comment, rating, user_id, bird_id|
+	Review.create(comment: comment, rating: rating, user_id: user_id, bird_id: bird_id)
 end

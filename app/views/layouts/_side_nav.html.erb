@@ -5,31 +5,13 @@
       <li><%= link_to "Home", root_path , method: :get %></li>
       <li><%= link_to "Species", species_index_path , method: :get %></li>
       <li><%= link_to "Birds", birds_path , method: :get %></li>
-      <li><%= link_to "Review", reviews_path , method: :get %></li>
-      <% if user_signed_in? %>
-        <li>
-        <%= link_to('Edit', edit_user_registration_path) %>
-        </li>
-      <% else %>
-        <li>
-        <%= link_to('Register', new_user_registration_path)  %>
-        </li>
-      <% end %>
-      <% if user_signed_in? %>
-        <li>
-        <%= link_to('Logout', destroy_user_session_path, method: :delete) %>
-        </li>
-      <% else %>
-        <li>
-        <%= link_to('Login', new_user_session_path)  %>
-        </li>
-      <% end %>
+      <li><%= link_to "Profile", current_user , method: :get %></li>
     </ul>
   </nav>
 
   <div class="colorlib-footer">
     <p><small>&copy;
-      Copyright &copy;2018 All rights reserved &copy; This template is made by <a href="https://trello.com/itnihongo3/home" target="_blank">VNCS語</a></span> </small></p>
+      Copyright &copy; 2018 All rights reserved &copy; This website is made by <a href="https://trello.com/itnihongo3/home" target="_blank">VNCS語</a></span> </small></p>
     <ul>
       <li><a href="https://www.facebook.com/"><i class="icon-facebook2"></i></a></li>
       <li><a href="https://twitter.com/"><i class="icon-twitter2"></i></a></li>

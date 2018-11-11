@@ -1,0 +1,15 @@
+#colorlib-main-log {
+    width: 100%;
+    min-height: 768px;
+    background-image: url(bird_log.jpg);
+    background-size: cover;
+    float: right;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s; }
+@media screen and (max-width: 1200px) {
+    #colorlib-main-log {
+        width: 70%; } }
+@media screen and (max-width: 768px) {
+    #colorlib-main-log {
+        width: 100%; } }

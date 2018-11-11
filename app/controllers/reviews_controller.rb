@@ -1,58 +1,50 @@
 class ReviewsController < ApplicationController
+  before_action :find_bird, only: [:index, :create, :show, :edit, :update, :destroy]
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
-  # GET /reviews
-  # GET /reviews.json
   def index
-    @reviews = Review.all
+    @reviews = @bird.reviews.all_comments.page(params[:page]).per(6)
   end
 
-  # GET /reviews/1
-  # GET /reviews/1.json
-  def show
-  end
+  def show; end
 
-  # GET /reviews/new
   def new
     @review = current_user.reviews.build
   end
 
-  # GET /reviews/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /reviews
-  # POST /reviews.json
   def create
     @review = current_user.reviews.build(review_params)
-
-    respond_to do |format|
-      if @review.save
-        format.html { redirect_to @review, notice: 'Review was successfully created.' }
-        format.json { render :show, status: :created, location: @review }
+    @review.bird_id = @bird.id
+    if @review.save
+      flash[:success] = "Thank you for your review."
+      redirect_to :back
+    else
+      if @review.errors.any?
+        flash[:warning] = "Comment and rating can't be blank."
       else
-        format.html { render :new }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+        flash[:warning] = "Some errors occured"
       end
+      redirect_to @bird
     end
+
   end
 
-  # PATCH/PUT /reviews/1
-  # PATCH/PUT /reviews/1.json
   def update
-    respond_to do |format|
-      if @review.update(review_params)
-        format.html { redirect_to @review, notice: 'Review was successfully updated.' }
-        format.json { render :show, status: :ok, location: @review }
+    if @review.update_attributes(review_params)
+      flash[:success] = "Your review has been updated."
+      redirect_to :back
+    else
+      if @review.errors.any?
+        flash[:warning] = "Comment and rating can't be blank."
       else
-        format.html { render :edit }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+        flash[:warning] = "Some errors occured"
       end
+      redirect_to :back
     end
   end
 
-  # DELETE /reviews/1
-  # DELETE /reviews/1.json
   def destroy
     @review.destroy
     respond_to do |format|
@@ -62,13 +54,20 @@ class ReviewsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_review
-      @review = Review.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def review_params
-      params.require(:review).permit(:comment, :rating, :user, :bird)
-    end
+  def set_review
+    @review = Review.find_by id: params[:id]
+    return if @review
+    redirect_to :back
+  end
+
+  def review_params
+    params.require(:review).permit(:comment, :rating)
+  end
+
+  def find_bird
+    @bird = Bird.find_by id: params[:bird_id]
+    return if @bird
+    redirect_to :back
+  end
 end

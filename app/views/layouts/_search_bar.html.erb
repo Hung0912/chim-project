@@ -1,10 +1,18 @@
-<form class="search-form">
+<%= search_form_for @q, url: birds_path, id: "search-form" do |f| %>
+  <%= f.text_field :bird_name_cont, placeholder: "Type a bird here...", class: "search-input" %>
+  <%= button_tag type: "submit", class: "search-button" do %>
+    <i class="fa fa-search" aria-hidden="true"></i>
+  <% end %>
+<% end %>
+
+<!-- <form class="search-form">
   <input type="search" value="" placeholder="Search" class="search-input">
   <button type="submit" class="search-button">
     <svg class="submit-button">
       <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#search"></use>
     </svg>
   </button>
+
   <div class="search-option">
     <div>
       <input name="type" type="radio" value="type-users" id="type-users">
@@ -15,7 +23,7 @@
         <span>Users</span>
       </label>
     </div>
-    
+
     <div>
       <input name="type" type="radio" value="type-posts" id="type-posts">
       <label for="type-posts">
@@ -44,7 +52,7 @@
       </label>
     </div>
   </div>
-</form>
+</form> -->
 
 <svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" display="none">
   <symbol id="search" viewBox="0 0 32 32">

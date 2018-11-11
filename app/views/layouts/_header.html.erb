@@ -10,9 +10,9 @@
                 <button type="button" name="Hover">LOG OUT</button>
             </div>
         <% end %>
-        <%= link_to edit_user_registration_path, :action => 'go' do %>
+        <%= link_to current_user, :action => 'go' do %>
             <div style="position: absolute; top: 0px; right: 100px;">
-                <%= image_tag ("anon.jpg"),  size: "50x50"%>  
+                <%= image_tag current_user.avatar.url(:thumb),  size: "50x50"%>  
             </div>
         <% end %>
     <% else %>

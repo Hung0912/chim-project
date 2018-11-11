@@ -31,7 +31,9 @@
           </div>
 
           <div class="actions">
-            <%= f.submit "Sign up" %>
+            <%= f.button :submit, class: "btn" do %>
+              <%= "Sign up" %>
+            <% end %>
           </div>
         <% end %>
 

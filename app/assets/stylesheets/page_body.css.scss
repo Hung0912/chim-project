@@ -1,0 +1,30 @@
+#colorlib-page {
+  width: 100%;
+  overflow: hidden;
+  position: relative; }
+
+#colorlib-page-top-padding {
+  padding-top: 35px;
+  width: 100%;
+  overflow: hidden;
+  position: relative; }
+
+#colorlib-page-double-top-padding {
+  padding-top: 70px;
+  width: 100%;
+  overflow: hidden;
+  position: relative; }
+
+#colorlib-main {
+    width: 80%;
+    float: right;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s; }
+    @media screen and (max-width: 1200px) {
+      #colorlib-main {
+        width: 70%; } }
+    @media screen and (max-width: 768px) {
+      #colorlib-main {
+        width: 100%; } }
+  

@@ -1,0 +1,22 @@
+<div class="flexslider js-fullheight">
+  <ul class="slides">
+    <% @birds.each do |bird| %>
+    <li style="background-image: url(<%= asset_path @bird_images.where(bird_id:bird.id).first.image %>); width: 100%; float: left; margin-right: -100%; position: relative; opacity: 0; display: block; z-index: 1;">
+      <div class="banner"></div>
+      <div class="overlay"></div>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-6 col-md-offset-3 col-md-push-3 col-sm-12 col-xs-12 js-fullheight slider-text">
+            <div class="slider-text-inner">
+              <div class="desc">
+                <h1><%=bird.bird_name %></h1>
+                <h2><%=bird.bird_info %></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </li>
+    <% end %>
+  </ul>
+</div>

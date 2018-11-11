@@ -10,6 +10,7 @@
 
 </head>
 <body>
+  <%= render partial: "flash_messages", flash: flash %>
   <%= render partial: "layouts/header", layout: "layouts/header" %>
   <%= render partial: "layouts/side_nav", layout: "layouts/side_nav" %>
   <%= yield %>

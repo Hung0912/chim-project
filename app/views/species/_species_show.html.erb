@@ -1,0 +1,37 @@
+<% @birds.each_slice(3) do |bird_row| %>
+  <div class="row">
+    <% bird_row.each do |bird| %>
+      <div class="col-md-4 col-sm-6 animate-box" data-animate-effect="fadeInLeft">
+        <div class="blog-entry">
+          <%= link_to bird do %>
+            <div class="blog-img">
+              <div class = "bird_cell" >
+                <%=
+                  @bird_images.where(bird_id:bird.id).exists? ?
+                    image_tag(@bird_images.where(bird_id:bird.id).first.image,   :width => "100%")
+                      : image_tag("no_image.png", :width => "100%")
+                 %>
+              </div>
+            </div>
+          <% end %>
+          <div class="desc">
+            <span>
+              <small><%= bird.species.species_name %></small> |
+              <small>
+                <i class="icon-bubble3"></i>
+                <%= bird.reviews.count %>
+              </small> |
+              <small>
+                <i class="icon-star2"></i>
+                <%= bird.rating %>
+              </small>
+            </span>
+            <h3><%= link_to bird.bird_name, bird, method: :get%></h3>
+            <p><%=bird.bird_info%></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
+<%= paginate @birds %>

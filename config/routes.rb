@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   devise_for :users, controllers: {sessions: "sessions", registrations: "registrations"}
-
+  resources :users, only: [:show, :edit, :update]
   resources :bird_images
-  resources :reviews
-  resources :birds
   resources :species
+  resources :birds do
+    resources :reviews
+  end
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

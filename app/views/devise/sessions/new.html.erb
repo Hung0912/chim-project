@@ -23,7 +23,9 @@
           <% end -%>
 
           <div class="actions">
-            <%= f.submit "Log in" %>
+            <%= f.button :submit, class: "btn" do %>
+              <%= "Log in" %>
+            <% end %>
           </div>
         <% end %>
         <br>

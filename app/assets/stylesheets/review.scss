@@ -1,0 +1,62 @@
+$brown: #D5A677;
+
+$textarea-color: $brown;
+$submit-color: $brown;
+
+.review-form {
+  // display: flex;
+  // overflow: hidden;
+}
+
+.review-form-text {
+  border-radius: 10px;
+  border: 1px solid green;
+  overflow: hidden;
+  width: 100%;
+}
+
+.review-form-text textarea {
+  // empty
+}
+
+.review-form-submit {
+  text-align: center;
+  padding: 10px 10px 10px 10px;
+}
+
+.review-form-submit .btn-primary {
+  background-color: $submit-color;
+  border-color: $submit-color;
+}
+
+.review-list {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+  }
+}
+
+.record img {
+  float: left;
+  margin-right: 10px;
+  width: 8%;
+}
+
+textarea.form-control {
+  resize: none;
+}
+
+.update-rating {
+  text-align: left;
+}
+
+.gravatar {
+  float: left;
+  border-radius: 50%;
+}
+
+.review-rating {
+  color: orange;
+}

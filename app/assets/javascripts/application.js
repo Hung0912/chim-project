@@ -29,4 +29,5 @@
 //= require respond.min
 //= require auto_hide_header
 //= require search_bar
+//= require toastr.min
 //

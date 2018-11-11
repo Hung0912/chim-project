@@ -1,0 +1,12 @@
+<div class="record" id="record-#{review.id}">
+  <li>
+    <%= avatar_for(review.user) %>
+    <strong><%= review.user.user_name %></strong>
+    <span><%= review.comment %></span><br>
+    <strong>Rating</strong>
+    <span><%= review.rating_float %></span>
+    <%= render partial: "reviews/rating", locals: {rating: review.rating_float} %>
+    <strong>Reviewed at </strong>
+    <span><%= review.updated_at.strftime("%Y-%m-%d, %H:%M") %></span>
+  </li>
+</div>

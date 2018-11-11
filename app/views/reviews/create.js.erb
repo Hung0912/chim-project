@@ -1,0 +1,5 @@
+$('.review-list').prepend('<%= j render @review %>');
+$('#review_comment').val('');
+$('.update-rating').html('<strong>Average rating: <%= @bird.rating %>/5</strong>');
+$("#flash").html('<%= j render partial: "flash_messages", flash: flash %>');
+$('.review-area').html('<%= j render partial: "reviews/update_form" %>');
