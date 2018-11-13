@@ -70,4 +70,8 @@ class ReviewsController < ApplicationController
     return if @bird
     redirect_to :back
   end
+
+  def show_user_reviews
+    @user_reviews = Review.where(user_id: current_user.id)
+  end
 end

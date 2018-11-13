@@ -1,10 +1,11 @@
 module UsersHelper
-  def avatar_for(user, options = { size: 300 })
-  	size = options[:size]
-  	if user.avatar?
-  		image_tag user.avatar.url(:thumb), class: 'avatar_image'
-  	else
-  		image_tag "anon.jpg", class: 'avatar_image'
-  	end
-  end
+	def avatar_for user
+		gravatar_id = Digest::MD5.hexdigest(user.email.downcase)
+		gravatar_url = "anon.jpg"
+		image_tag(user.avatar, alt: user.user_name, class: "gravatar")
+	end
+	def image_tag(source, options={})
+		source = "anon.jpg" if source.blank?
+		super(source, options)
+	end
 end

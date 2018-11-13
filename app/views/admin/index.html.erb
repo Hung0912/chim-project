@@ -1,0 +1,42 @@
+<div id="colorlib-page">
+	<div id="colorlib-main">
+    <% if current_user.user_role != 1 %>
+      <div class="colorlib-blog">
+        <h1>You are not allowed to view this page</h1>
+      </div>
+    <% end %>
+    <% if current_user.user_role == 1 %>
+      <div class="colorlib-blog" style="padding-top: 50px">
+      <div id="colorlib-counter-admin" class="colorlib-counters" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="colorlib-narrow-content">
+          <div class="row">
+          </div>
+          <div class="row">
+            <div class="col-md-3 text-center animate-box">
+              <span class="icon"><i class="icon-social-twitter"></i></span>
+              <span class="colorlib-counter js-counter" data-from="0" data-to=<%=@total_bird%> data-speed="5000" data-refresh-interval="50"></span>
+              <span class="colorlib-counter-label">Birds</span>
+            </div>
+            <div class="col-md-3 text-center animate-box">
+              <span class="icon"><i class="icon-social-twitter-circular"></i></span>
+              <span class="colorlib-counter js-counter" data-from="0" data-to=<%=@total_species%> data-speed="5000" data-refresh-interval="50"></span>
+              <span class="colorlib-counter-label">Species</span>
+            </div>
+            <div class="col-md-3 text-center animate-box">
+              <span class="icon"><i class="icon-user"></i></span>
+              <span class="colorlib-counter js-counter" data-from="0" data-to=<%=@total_user%> data-speed="5000" data-refresh-interval="50"></span>
+              <span class="colorlib-counter-label">Users</span>
+            </div>
+            <div class="col-md-3 text-center animate-box">
+              <span class="icon"><i class="icon-message-typing"></i></span>
+              <span class="colorlib-counter js-counter" data-from="0" data-to=<%=@total_review%> data-speed="5000" data-refresh-interval="50"></span>
+              <span class="colorlib-counter-label">Reviews</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    <% end %>
+	</div>
+</div>

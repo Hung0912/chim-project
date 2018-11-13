@@ -6,19 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-user = User.new(
-    user_name: 'admin',
-    email: 'admin@123.com',
-    password: '123456',
-    password_confirmation: '123456',
-    user_role: 1
-  )
+
 user_list = [
-	["Hung","hung@gmail.com","123456","123456",1,"1996-1-1","male","01234568"],
-	["Dat","dat@gmail.com","123456","123456",1,"1996-1-1","male","01234568"],
-	["TAnh","TAnh@gmail.com","123456","123456",1,"1996-1-1","male","01234568"],
-	["Binh","Binh@gmail.com","123456","123456",1,"1996-1-1","male","01234568"],
-	["Quoc","Quoc@gmail.com","123456","123456",1,"1996-1-1","male","01234568"]
+	["Hung","hung@gmail.com","123456","123456",0,"1996-1-1","male","01234568"],
+	["Dat","dat@gmail.com","123456","123456",0,"1996-1-1","male","01234568"],
+	["TAnh","TAnh@gmail.com","123456","123456",0,"1996-1-1","male","01234568"],
+	["Binh","Binh@gmail.com","123456","123456",0,"1996-1-1","male","01234568"],
+	["Quoc","Quoc@gmail.com","123456","123456",0,"1996-1-1","male","01234568"],
+	["Admin","admin@gmail.com","123456","123456",1,"1996-1-1","male","01234568"]
 ]
 user_list.each do |name, mail, password, password_confirmation, role, birthday, sex, phone|
 	User.create( user_name: name, email: mail, password: password, password_confirmation: password_confirmation,
@@ -166,5 +161,20 @@ sibia_reviews = [
 	]
 
 sibia_reviews.each do |comment, rating, user_id, bird_id|
+	Review.create(comment: comment, rating: rating, user_id: user_id, bird_id: bird_id)
+end
+
+random_reviews = [
+		["めっちゃ綺麗なとり~",40,4,18],
+		["この鳥の声はユニークですね",45,4,18],
+		["まだ、見てる人いまふか？？﻿",30,4,18],
+		["この鳥、飼いたいものだ :))",50,4,18],
+		["めっちゃ綺麗なとり~",40,4,17],
+		["この鳥の声はユニークですね",45,4,17],
+		["まだ、見てる人いまふか？？﻿",30,4,17],
+		["この鳥、飼いたいものだ :))",50,4,17],
+]
+
+random_reviews.each do |comment, rating, user_id, bird_id|
 	Review.create(comment: comment, rating: rating, user_id: user_id, bird_id: bird_id)
 end
