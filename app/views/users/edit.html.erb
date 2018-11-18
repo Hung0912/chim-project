@@ -4,7 +4,7 @@
       <div class="colorlib-narrow-content">
         <div class="row">
           <div class="col-md-6 col-md-offset-3 col-md-pull-3 animate-box" data-animate-effect="fadeInLeft">
-
+            <%if current_user.id == @user.id %>
             <div class="container">
               <h1>Edit Profile</h1>
               <%= form_for(@user, html: {multipart: true}) do |f| %>
@@ -13,9 +13,11 @@
                   <!-- left column -->
                   <div class="col-md-6">
                     <div class="text-center">
-                      <%= image_tag(current_user.avatar, class: 'avatar_image') %>
-                      <%= f.file_field :avatar ,class:'upload-btn'%>
-                      <%= f.hidden_field :avatar_cache %>
+                      <%=image_tag(@user.avatar, size:'480x480')%><br/><br/>
+                      <div style = "padding-left: 60px">
+                        <%= f.file_field :avatar ,class:'upload-btn'%>
+                        <%= f.hidden_field :avatar_cache %>
+                      </div>
                     </div>
                   </div>
 
@@ -24,9 +26,6 @@
                     <h3>Personal info</h3>
                     <%= f.label :user_name %>
                     <%= f.text_field :user_name, class: 'form-control' %>
-
-                    <%= f.label :description %>
-                    <%= f.text_field :description, class: 'form-control' %>
 
                     <%= f.label :email %>
                     <%= f.email_field :email, class: 'form-control' %>
@@ -46,6 +45,11 @@
               <% end %>
               </div>
             </div>
+            <% else %>
+              <h1>You don't have permission to edit this profile</h1>
+            <% end %>
+
+
             <hr>
           </div>
         </div>

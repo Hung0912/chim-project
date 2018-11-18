@@ -14,9 +14,11 @@
                 <% Review.where(user_id: current_user.id).each do |review| %>
                   <div class="row row-bottom-padded-md">
                     <div class="col-md-6">
-                      <%= link_to Bird.where(id:review.bird_id).first, method: :get do %>
-                        <%=image_tag(BirdImage.where(bird_id:review.bird_id).first.image) %>
-                      <% end %>
+                      <div class = "blog-img">
+                        <%= link_to Bird.where(id:review.bird_id).first, method: :get do %>
+                          <%=image_tag(BirdImage.where(bird_id:review.bird_id).first.image, :width => "100%") %>
+                        <% end %>
+                      </div>
                     </div>
                     <div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
                       <div class="about-desc">

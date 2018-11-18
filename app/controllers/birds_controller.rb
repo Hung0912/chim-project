@@ -36,9 +36,11 @@ class BirdsController < ApplicationController
   def update
     respond_to do |format|
       if @bird.update(bird_params)
+        flash[:success] = "Bird profile updated"
         format.html { redirect_to @bird, notice: 'Bird was successfully updated.' }
         format.json { render :show, status: :ok, location: @bird }
       else
+        flash[:error] = "Update failed! Something went wrong!"
         format.html { render :edit }
         format.json { render json: @bird.errors, status: :unprocessable_entity }
       end

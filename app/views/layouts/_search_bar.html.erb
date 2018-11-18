@@ -1,5 +1,5 @@
 <%= search_form_for @q, url: birds_path, id: "search-form" do |f| %>
-  <%= f.text_field :bird_name_cont, placeholder: "Type a bird here...", class: "search-input" %>
+  <%= f.text_field :bird_name_cont, placeholder: "鳥の名前...", class: "search-input" %>
   <%= button_tag type: "submit", class: "search-button" do %>
     <i class="fa fa-search" aria-hidden="true"></i>
   <% end %>

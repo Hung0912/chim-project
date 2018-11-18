@@ -155,8 +155,8 @@ body.offcanvas {
   position: relative; }
 
 .colorlib-heading {
-  font-size: 18px;
-  margin-bottom: 4em;
+  font-size: 25px;
+  margin-bottom: 3em;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 5px;
@@ -176,6 +176,19 @@ body.offcanvas {
     .colorlib-heading {
       margin-bottom: 3em; } }
 
+.colorlib-heading-profile {
+  font-size: 25px;
+  margin-bottom: 3em;
+  font-weight: 500;
+  letter-spacing: 5px;
+  line-height: 1.8;
+  position: relative; }
+.colorlib-heading span {
+  display: block; }
+@media screen and (max-width: 768px) {
+  .colorlib-heading {
+    margin-bottom: 3em; } }
+
 .heading-meta {
   margin-bottom: 15px;
   display: block;
@@ -184,6 +197,15 @@ body.offcanvas {
   color: #999999;
   font-weight: 500;
   letter-spacing: 5px; }
+
+.heading-meta-kanji {
+  margin-bottom: 20px;
+  display: block;
+  font-size: 17px;
+  text-transform: uppercase;
+  color: #999999;
+  font-weight: 500;
+  letter-spacing: 2px; }
 
 .heading-results {
   margin-bottom: 15px;

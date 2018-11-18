@@ -18,7 +18,7 @@
                 <% BirdImage.where(bird_id: @bird.id).each_with_index do |bird_image, index| %>
                   <div class="item <%= index == 0 ? 'active' : '' %>">
                     <div class="bird_cell">
-                      <%= image_tag(bird_image.image, :width => "100%", :height => "500px") %>
+                      <%= image_tag(bird_image.image, :width => "100%", :height => "510px") %>
                     </div>
                   </div>
                 <% end %>
@@ -38,24 +38,37 @@
         </div>
         <div class="col-md-6">
           <div class="about-desc">
+            <%= link_to @bird.species , method: :get do  %>
             <span class="heading-meta"><%= @bird.species.species_name %></span>
+            <%end %>
             <h2 class="colorlib-heading"><%= @bird.bird_name %></h2>
+            <div class = "review-rating-big">
+              <div class="update-rating"><strong>Average rating: <%= @bird.rating %>/5</strong></div>
+              <%= render partial: "reviews/rating", locals: {rating: @bird.rating} %>
+            </div>
             <p><%= @bird.bird_info %></p>
           </div>
 
           <div class="about-desc">
-            <span class="heading-meta">Price:</span>
-            <h2><%= @bird.bird_price %>‎¥</h2>
+            <span class="heading-meta-kanji">値段:</span>
+            <h2>¥ <%= @bird.bird_price %>‎</h2>
           </div>
 
           <div class="about-desc">
-            <span class="heading-meta">Voice:</span>
+            <span class="heading-meta-kanji">音声:</span>
             <audio controls>
               <source src=<%= asset_path(@bird.bird_voice) %> type="audio/mpeg">
               This bird has no voice data.
             </audio>
           </div>
         </div>
+        <% if user_signed_in? %>
+        <% if current_user.user_role==1 %>
+          <%= link_to "Edit Bird", edit_bird_path(@bird), method: :get, class: "btn btn-primary" %>
+          <%= link_to "Delete Bird", @bird, method: :delete, data: { confirm: 'Are you sure?'}, class: "btn btn-primary" %>
+        <% end %>
+        <% end %>
+
         <div class="colorlib-about", style =  "padding-top: 0px">
           <div id="review-area">
             <% if user_signed_in? %>
@@ -85,8 +98,6 @@
 
           <div class="container">
             <strong><%= @bird.review_count %> users has reviewed <%= @bird.bird_name %></strong>
-            <div class="update-rating"><strong>Average rating: <%= @bird.rating %>/5</strong></div>
-            <%= render partial: "reviews/rating", locals: {rating: @bird.rating} %>
             <%= paginate @reviews %>
             <ul class="review-list">
               <%= render @reviews %>

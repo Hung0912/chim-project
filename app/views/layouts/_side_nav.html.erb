@@ -2,13 +2,13 @@
   <h1 id="colorlib-logo"><%= link_to "鳥好き", root_path , method: :get %></h1>
   <nav id="colorlib-main-menu" role="navigation">
     <ul>
-      <li><%= link_to "Home", root_path , method: :get %></li>
-      <li><%= link_to "Species", species_index_path , method: :get %></li>
-      <li><%= link_to "Birds", birds_path , method: :get %></li>
+      <li><%= link_to "ホーム", root_path , method: :get %></li>
+      <li><%= link_to "種類", species_index_path , method: :get %></li>
+      <li><%= link_to "鳥", birds_path , method: :get %></li>
       <% if user_signed_in? %>
-        <li><%= link_to "Review", user_review_path , method: :get %></li>
+        <li><%= link_to "レビュー", user_review_path , method: :get %></li>
         <% if current_user.user_role == 1 %>
-          <li><%= link_to "Admin", admin_path , method: :get %></li>
+          <li><%= link_to "アドミン", admin_path , method: :get %></li>
         <%end %>
       <%end %>
     </ul>

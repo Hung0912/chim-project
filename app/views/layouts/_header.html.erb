@@ -6,8 +6,8 @@
     <% if user_signed_in? %>
         <%= link_to destroy_user_session_path, method: :delete do %>
             <div class="button-container-2" style="position: absolute; top: 0px; right: 0px;">
-                <span class="mas">LOG OUT</span>
-                <button type="button" name="Hover">LOG OUT</button>
+                <span class="mas">LOGOUT</span>
+                <button type="button" name="Hover">LOGOUT</button>
             </div>
         <% end %>
         <%= link_to current_user, method: :get do %>
@@ -18,14 +18,14 @@
     <% else %>
         <%= link_to new_user_session_path, :action => 'go' do %>
             <div class="button-container-2" style="position: absolute; top: 0px; right: 0px;">
-                <span class="mas">LOGIN</span>
-                <button type="button" name="Hover">LOGIN</button>
+                <span class="mas">ログイン</span>
+                <button type="button" name="Hover">ログイン</button>
             </div>
         <% end %>
         <%= link_to new_user_registration_path, :action => 'go' do %>
             <div class="button-container-1" style="position: absolute; top: 0px; right: 100px;">
-                <span class="mas">SIGN UP</span>
-                <button type="button" name="Hover">SIGN UP</button>
+                <span class="mas">登録</span>
+                <button type="button" name="Hover">登録</button>
             </div>
         <% end %>     
     <% end %>

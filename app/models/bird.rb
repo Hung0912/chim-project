@@ -24,4 +24,5 @@ class Bird < ActiveRecord::Base
   def review_count
     reviews.count
   end
+  mount_uploader :bird_voice, VoiceUploader
 end
